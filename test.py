@@ -36,7 +36,7 @@ i0 = cv2.resize(i0,(1280,720))
 i1 = cv2.resize(i1,(1280,720))
 
 cv2.imwrite(os.path.join(save_dir,"0.png"),i0)
-cv2.imwrite(os.path.join(save_dir,f"{n_frames}.png"),i1)
+cv2.imwrite(os.path.join(save_dir,f"{n_frames+1}.png"),i1)
 
 #padding frames
 h, w, c = i0.shape
@@ -50,6 +50,6 @@ I0 = torch.from_numpy(np.transpose(I0, (2,0,1))).to(device, non_blocking=True).u
 I1 = torch.from_numpy(np.transpose(I1, (2,0,1))).to(device, non_blocking=True).unsqueeze(0).float() / 255.
 
 result = make_inference(I0, I1, n_frames, scale, pred_bidir_flow)
-for i in range(1,n_frames):
+for i in range(n_frames):
     result[i] = cv2.resize(result[i],(1280,720))
-    cv2.imwrite(os.path.join(save_dir,f"{i}.png"),result[i])
+    cv2.imwrite(os.path.join(save_dir,f"{i+1}.png"),result[i])
