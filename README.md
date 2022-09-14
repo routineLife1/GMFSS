@@ -9,7 +9,6 @@ GMFlow based video frame interpolation
 - cupy
 
 ## Usage
-- Download [weights](https://drive.google.com/drive/folders/1ZmV2KZJd0ywwheqdszOkV2j2DWjj9G2e?usp=sharing) and put them in 'weights' folder
 - Run the following command and view the result in the 'output' folder
 ```
 python test.py
