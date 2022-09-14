@@ -11,6 +11,8 @@ img_second = 'images/002.jpg'
 weigth_path = 'weights'
 save_dir = 'output'
 n_frames = 10
+scale = 1.0 # flow scale
+pred_bidir_flow = False # Estimate bilateral optical flow at once (accelerate)
 
 device = torch.device("cuda")
 torch.set_grad_enabled(False)
@@ -23,7 +25,7 @@ model.eval()
 model.device(device)
 
 def make_inference(I0, I1, n, scale, pred_bidir_flow=False):    
-    timesteps = [(i+1) * 1. / (n+1) for i in range(n)]
+    timesteps = [i / (n+1) for i in range(1,n+1)]
     return model.inference(I0, I1, timesteps, scale, pred_bidir_flow)
 
 i0 = cv2.imread(img_first)
@@ -33,8 +35,8 @@ i1 = cv2.imread(img_second)
 i0 = cv2.resize(i0,(1280,720))
 i1 = cv2.resize(i1,(1280,720))
 
-scale = 1.0 # flow scale
-pred_bidir_flow = False # Estimate bilateral optical flow at once
+cv2.imwrite(os.path.join(save_dir,"0.png"),i0)
+cv2.imwrite(os.path.join(save_dir,f"{n_frames}.png"),i1)
 
 #padding frames
 h, w, c = i0.shape
@@ -49,4 +51,5 @@ I1 = torch.from_numpy(np.transpose(I1, (2,0,1))).to(device, non_blocking=True).u
 
 result = make_inference(I0, I1, n_frames, scale, pred_bidir_flow)
 for i in range(1,n_frames):
+    result[i] = cv2.resize(result[i],(1280,720))
     cv2.imwrite(os.path.join(save_dir,f"{i}.png"),result[i])
