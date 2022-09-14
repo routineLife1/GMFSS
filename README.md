@@ -3,6 +3,7 @@ GMFlow based video frame interpolation
 
 ## Requirement
 
+- Python 3.10.7 or other versions
 - opencv-python
 - pytorch
 - numpy
