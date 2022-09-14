@@ -8,6 +8,7 @@ GMFlow based video frame interpolation
 - pytorch
 - numpy
 - cupy
+- pandas
 
 ## Usage
 - Run the following command and view the result in the 'output' folder
