@@ -32,4 +32,4 @@ Optical Flow:
 [GMFlow](https://github.com/haofeixu/gmflow)
 
 Video Interpolation: 
-[SoftSplat-Full](https://github.com/JHLew/SoftSplat-Full)  [SoftSplat](https://github.com/sniklaus/softmax-splatting) [AnimeInterp](https://github.com/lisiyao21/AnimeInterp) [EISAI](https://github.com/ShuhongChen/eisai-anime-interpolator)
+[SoftSplat-Full](https://github.com/JHLew/SoftSplat-Full)  [SoftSplat](https://github.com/sniklaus/softmax-splatting) [AnimeInterp](https://github.com/lisiyao21/AnimeInterp) [EISAI](https://github.com/ShuhongChen/eisai-anime-interpolator) [ECCV2022-RIFE](https://github.com/megvii-research/ECCV2022-RIFE)
