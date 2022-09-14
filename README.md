@@ -1,5 +1,5 @@
 # GMFSS
-GMFlow based video frame interpolation
+GMFlow based anime video frame interpolation
 
 ## Requirement
 
