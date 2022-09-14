@@ -15,7 +15,7 @@ GMFlow based video frame interpolation
 python test.py
 ```
 
-## Benchmarks on the anime test set
+## Benchmarks on anime test set
 
 - Download [Dataset](https://drive.google.com/file/d/1GZ3PwCqhDyD_5-9HCsJdowq2g8Dt31ax/view?usp=sharing) and unzip it to 'dataset' folder
 - Run eval.py and see result at 'loss.csv'
