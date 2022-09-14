@@ -9,14 +9,21 @@ GMFlow based video frame interpolation
 - cupy
 
 ## Usage
-- Download weights from [Google Drive](https://drive.google.com/drive/folders/1ZmV2KZJd0ywwheqdszOkV2j2DWjj9G2e?usp=sharing) and put them inside the weights folder
-- Run the following command and view the result in the output folder
+- Download [weights](https://drive.google.com/drive/folders/1ZmV2KZJd0ywwheqdszOkV2j2DWjj9G2e?usp=sharing) and put them in 'weights' folder
+- Run the following command and view the result in the 'output' folder
 ```
 python test.py
 ```
 
 ## Benchmarks on the anime test set
-     PSNR: 23.839 SSIM: 0.908 LPIPS: 0.107
+
+- Download [Dataset](https://drive.google.com/file/d/1GZ3PwCqhDyD_5-9HCsJdowq2g8Dt31ax/view?usp=sharing) and unzip it to 'dataset' folder
+- Run eval.py and see result at 'loss.csv'
+
+```
+PSNR: 23.839 SSIM: 0.908 LPIPS: 0.107
+```
+
 <img src="https://user-images.githubusercontent.com/68835291/190122330-1f3e0418-5e19-4383-a215-09f944cf5f85.gif" width="60%">
 
 ## Reference
