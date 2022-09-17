@@ -183,58 +183,52 @@ class AnimeInterp(nn.Module):
         feat11, feat12, feat13 = self.feat_ext(I1o)
         feat21, feat22, feat23 = self.feat_ext(I2o)
 
+        I1t = warp(I1, F1t, Z1, strMode='soft')
+        I2t = warp(I2, F2t, Z2, strMode='soft')
+        one0 = torch.ones(I1.size(), requires_grad=True).cuda()
+        norm1 = warp(one0, F1t.clone(), Z1, strMode='soft')
+        norm2 = warp(one0, F2t.clone(), Z2, strMode='soft')
+        I1t[norm1 > 0] = I1t.clone()[norm1 > 0] / norm1[norm1 > 0]
+        I2t[norm2 > 0] = I2t.clone()[norm2 > 0] / norm2[norm2 > 0]
+
         F1td = self.dflow(F1t, feat11)
         F2td = self.dflow(F2t, feat21)
         Z1d = self.dmetric(Z1, feat11)
         Z2d = self.dmetric(Z2, feat21)
+        feat1t1 = warp(feat11, F1td, Z1d, strMode='soft')
+        feat2t1 = warp(feat21, F2td, Z2d, strMode='soft')
+        one1 = torch.ones(feat11.size(), requires_grad=True).cuda()
+        norm1t1 = warp(one1, F1td.clone(), Z1d, strMode='soft')
+        norm2t1 = warp(one1, F2td.clone(), Z2d, strMode='soft')
+        feat1t1[norm1t1 > 0] = feat1t1.clone()[norm1t1 > 0] / norm1t1[norm1t1 > 0]
+        feat2t1[norm2t1 > 0] = feat2t1.clone()[norm2t1 > 0] / norm2t1[norm2t1 > 0]
 
         F1tdd = self.dflow(F1t, feat12)
         F2tdd = self.dflow(F2t, feat22)
         Z1dd = self.dmetric(Z1, feat12)
         Z2dd = self.dmetric(Z2, feat22)
+        feat1t2 = warp(feat12, F1tdd, Z1dd, strMode='soft')
+        feat2t2 = warp(feat22, F2tdd, Z2dd, strMode='soft')
+        one2 = torch.ones(feat12.size(), requires_grad=True).cuda()
+        norm1t2 = warp(one2, F1tdd.clone(), Z1dd, strMode='soft')
+        norm2t2 = warp(one2, F2tdd.clone(), Z2dd, strMode='soft')
+        feat1t2[norm1t2 > 0] = feat1t2.clone()[norm1t2 > 0] / norm1t2[norm1t2 > 0]
+        feat2t2[norm2t2 > 0] = feat2t2.clone()[norm2t2 > 0] / norm2t2[norm2t2 > 0]
 
         F1tddd = self.dflow(F1t, feat13)
         F2tddd = self.dflow(F2t, feat23)
         Z1ddd = self.dmetric(Z1, feat13)
-        Z2ddd = self.dmetric(Z2, feat23)
-
-        one0 = torch.ones(I1.size(), requires_grad=True).cuda()
-        one1 = torch.ones(feat11.size(), requires_grad=True).cuda()
-        one2 = torch.ones(feat12.size(), requires_grad=True).cuda()
-        one3 = torch.ones(feat13.size(), requires_grad=True).cuda()
-
-        I1t = warp(I1, F1t, Z1, strMode='soft')
-        feat1t1 = warp(feat11, F1td, Z1d, strMode='soft')
-        feat1t2 = warp(feat12, F1tdd, Z1dd, strMode='soft')
+        Z2ddd = self.dmetric(Z2, feat23)        
         feat1t3 = warp(feat13, F1tddd, Z1ddd, strMode='soft')
-
-        I2t = warp(I2, F2t, Z2, strMode='soft')
-        feat2t1 = warp(feat21, F2td, Z2d, strMode='soft')
-        feat2t2 = warp(feat22, F2tdd, Z2dd, strMode='soft')
         feat2t3 = warp(feat23, F2tddd, Z2ddd, strMode='soft')
-
-        norm1 = warp(one0, F1t.clone(), Z1, strMode='soft')
-        norm1t1 = warp(one1, F1td.clone(), Z1d, strMode='soft')
-        norm1t2 = warp(one2, F1tdd.clone(), Z1dd, strMode='soft')
+        one3 = torch.ones(feat13.size(), requires_grad=True).cuda()
         norm1t3 = warp(one3, F1tddd.clone(), Z1ddd, strMode='soft')
-
-        norm2 = warp(one0, F2t.clone(), Z2, strMode='soft')
-        norm2t1 = warp(one1, F2td.clone(), Z2d, strMode='soft')
-        norm2t2 = warp(one2, F2tdd.clone(), Z2dd, strMode='soft')
         norm2t3 = warp(one3, F2tddd.clone(), Z2ddd, strMode='soft')
-
-        I1t[norm1 > 0] = I1t.clone()[norm1 > 0] / norm1[norm1 > 0]
-        I2t[norm2 > 0] = I2t.clone()[norm2 > 0] / norm2[norm2 > 0]
-        
-        feat1t1[norm1t1 > 0] = feat1t1.clone()[norm1t1 > 0] / norm1t1[norm1t1 > 0]
-        feat2t1[norm2t1 > 0] = feat2t1.clone()[norm2t1 > 0] / norm2t1[norm2t1 > 0]
-        
-        feat1t2[norm1t2 > 0] = feat1t2.clone()[norm1t2 > 0] / norm1t2[norm1t2 > 0]
-        feat2t2[norm2t2 > 0] = feat2t2.clone()[norm2t2 > 0] / norm2t2[norm2t2 > 0]
-        
         feat1t3[norm1t3 > 0] = feat1t3.clone()[norm1t3 > 0] / norm1t3[norm1t3 > 0]
         feat2t3[norm2t3 > 0] = feat2t3.clone()[norm2t3 > 0] / norm2t3[norm2t3 > 0]
 
-        It_warp = self.synnet(torch.cat([I1t, I2t], dim=1), torch.cat([feat1t1, feat2t1], dim=1), torch.cat([feat1t2, feat2t2], dim=1), torch.cat([feat1t3, feat2t3], dim=1))
+        with torch.autocast("cuda"):
+            It_warp = self.synnet(torch.cat([I1t, I2t], dim=1), torch.cat([feat1t1, feat2t1], dim=1), torch.cat([feat1t2, feat2t2], dim=1), torch.cat([feat1t3, feat2t3], dim=1))
 
-        return It_warp
+        return torch.clamp(It_warp.float(), 0, 1)
+        
