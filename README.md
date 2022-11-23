@@ -1,6 +1,11 @@
 # GMFSS
 GMFlow based anime video frame interpolation
 
+# new advanced VFI algorithm based on GMFSS
+[GMFupSS](https://github.com/98mxr/GMFupSS): A faster GMFSS using SR
+
+[GMFSS_UNION](https://github.com/98mxr/GMFSS_union): The next generation of GMFSS with better performance
+
 ## Requirement
 
 - Python 3.10.7 or other versions
