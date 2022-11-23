@@ -1,10 +1,7 @@
 # GMFSS
 GMFlow based anime video frame interpolation
 
-# new advanced VFI algorithm based on GMFSS
-[GMFupSS](https://github.com/98mxr/GMFupSS): A faster GMFSS
-
-[GMFSS_UNION](https://github.com/98mxr/GMFSS_union): The next generation of GMFSS with better performance
+## We now provide [GMFupSS](https://github.com/98mxr/GMFupSS) and [GMFSS_UNION](https://github.com/98mxr/GMFSS_union) as the next generation of GMFSS with better performance. Welcome to try.
 
 ## Requirement
 
