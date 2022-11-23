@@ -1,7 +1,7 @@
 # GMFSS
 GMFlow based anime video frame interpolation
 
-## We now provide [GMFupSS](https://github.com/98mxr/GMFupSS) and [GMFSS_UNION](https://github.com/98mxr/GMFSS_union) as the next generation of GMFSS with better performance. Welcome to try.
+## We now provide [GMFupSS](https://github.com/98mxr/GMFupSS) and [GMFSS_union](https://github.com/98mxr/GMFSS_union) as the next generation of GMFSS with better performance. Welcome to try.
 
 ## Requirement
 
