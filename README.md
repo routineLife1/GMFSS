@@ -36,3 +36,6 @@ Optical Flow:
 
 Video Interpolation: 
 [SoftSplat-Full](https://github.com/JHLew/SoftSplat-Full)  [SoftSplat](https://github.com/sniklaus/softmax-splatting) [AnimeInterp](https://github.com/lisiyao21/AnimeInterp) [EISAI](https://github.com/ShuhongChen/eisai-anime-interpolator) [ECCV2022-RIFE](https://github.com/megvii-research/ECCV2022-RIFE)
+
+## Acknowledgment
+This project is sponsored by [SVFI](https://steamcommunity.com/app/1692080) [Development Team](https://github.com/Justin62628/Squirrel-RIFE) 
