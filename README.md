@@ -37,6 +37,8 @@ PSNR: 23.839 SSIM: 0.908 LPIPS: 0.107
 
 <img src="https://user-images.githubusercontent.com/68835291/190122330-1f3e0418-5e19-4383-a215-09f944cf5f85.gif" width="60%">
 
+## Also, have a look on VideoFlow’s First VFI application, [VFSS](https://github.com/hyw-dev/VFSS)!
+
 ## Reference
 
 Optical Flow:
