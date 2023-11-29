@@ -34,7 +34,7 @@ python test.py
 - Run eval.py and see result at 'loss.csv'
 
 ```
-PSNR: 29.12 SSIM: 0.930 LPIPS: 0.047
+PSNR: 29.22 SSIM: 0.932 LPIPS: 0.048
 ```
 
 <img src="https://user-images.githubusercontent.com/68835291/190122330-1f3e0418-5e19-4383-a215-09f944cf5f85.gif" width="60%">
