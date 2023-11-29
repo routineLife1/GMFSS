@@ -28,11 +28,13 @@ python test.py
 
 ## Benchmarks on anime test set
 
-- Download [Dataset](https://drive.google.com/file/d/1GZ3PwCqhDyD_5-9HCsJdowq2g8Dt31ax/view?usp=sharing) and unzip it to 'dataset' folder
+- Switch to project [GMFSS_Fortuna](https://github.com/98mxr/GMFSS_Fortuna)
+- Download [ATD-12K](https://drive.google.com/file/d/1GZ3PwCqhDyD_5-9HCsJdowq2g8Dt31ax/view?usp=sharing) and unzip it, rename atd_test2k to dataset
+- Put the dataset to the root of eval.py
 - Run eval.py and see result at 'loss.csv'
 
 ```
-PSNR: 23.839 SSIM: 0.908 LPIPS: 0.107
+PSNR: 29.12 SSIM: 0.930 LPIPS: 0.047
 ```
 
 <img src="https://user-images.githubusercontent.com/68835291/190122330-1f3e0418-5e19-4383-a215-09f944cf5f85.gif" width="60%">
